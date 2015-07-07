@@ -25,11 +25,10 @@ $(function() {
         
 	    var songName; 
 	    var songArtist;
+	    var albumImage;
 	    var songData;
 
-        $.get(
-          queryString, 
-          function(data) {
+        $.get(queryString, function(data) {
           	var itemsArray = data;
             // return itemsArray
 			console.log(itemsArray);
@@ -37,11 +36,12 @@ $(function() {
 	         _.each(itemsArray.tracks.items, function(items, i) {
 	         	songName = itemsArray.tracks.items[i].name;
 	         	songArtist = itemsArray.tracks.items[i].artists[0].name;
-	            songData = {name: songName, artist: songArtist}
+	         	albumImage = itemsArray.tracks.items[i].album.images[1].url;
+	            songData = {name: songName, artist: songArtist, image: albumImage};
 	            console.log(songData);
 
 
-        		var songList = [{name: "katie", artist: "zoe"}];
+        		var songList = [];
 				console.log(songList) 
 
 				//store song name and artist
